@@ -1,6 +1,12 @@
 # Summary_Bullet_Points_Generation
 This repo creates a summary and bullet points based on the user's input as a message using Groq API. 
 
+# Prerequisites
+1. Python (>=3.x)
+2. pip (Python Package Installer)
+3. Virtualenv
+4. Postman
+
 # Clone Repo
 > git clone https://github.com/rishhhh-dev/Summary_Bullet_Points_Generation.git
 
@@ -37,5 +43,30 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+# Start local server
+```
+python manage.py runserver
+```
+
+# Execute API endpoints via CURL or Postman
+> To generate a JWT token
+```
+curl -X POST http://127.0.0.1:8000/api/token/ \
+     -H "Content-Type: application/json" \
+     -d '{"username": "your_username", "password": "your_password"}'
+```
+
+> To generate the summary
+```
+curl -X POST http://127.0.0.1:8000/generate-summary/ -H "Authorization: Bearer <your_jwt_token>" -H "Content-Type: application/json" -d '{"message": "Your input text here"}'
+```
+
+> To generate bullet points
+```
+curl -X POST http://127.0.0.1:8000/generate-bullet-points/ -H "Authorization: Bearer <your_jwt_token>" -H "Content-Type: application/json" -d '{"message": "Your input text here"}'
+```
+
 # Run test cases command
-> pytest
+```
+pytest
+```
